@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single round</title>
+</head>
+<body>
+    <script>
+        
+        function computerPlay() {
+            computerChoice = Math.floor(Math.random() * 3)
+            if (computerChoice === 0) {
+                return "rock";
+            } else if (computerChoice === 1) {
+                return "paper";
+            } else if (computerChoice === 2) {
+                return "scissors"
+            }       
+        }
+
+        function personPlay() {
+            playerChoice = prompt("rock, paper, scissors - shoot!")
+            return playerChoice.toLowerCase();
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = personPlay()
+            computerSelection = computerPlay()
+
+            if (playerSelection === computerSelection) {
+                console.log("Tie!")
+                return 0;
+            } else if (playerSelection === "rock" && computerSelection === "paper") {
+                console.log("You lose! Paper beats rock.")
+                return -1;
+            } else if (playerSelection === "paper" && computerSelection === "scissors") {
+                console.log("You lose! Scissors beats paper.")
+                return -1;
+            } else if (playerSelection === "scissors" && computerSelection === "rock") {
+                console.log("You lose! Rock beats scissors.")
+                return -1;
+            } else if (playerSelection === "paper" && computerSelection === "rock") {
+                console.log("You win! Paper beats rock.")
+                return 1;
+            } else if (playerSelection === "scissors" && computerSelection === "paper") {
+                console.log("You win! Scissors beats paper.")
+                return 1;
+            } else if (playerSelection === "rock" && computerSelection === "scissors") {
+                console.log("You win! Rock beats scissors.")
+                return 1;
+            }
+            
+            }
+        
+        function fiveGames() {
+            score = playRound() + playRound() + playRound() + playRound() + playRound()
+
+            if (score === 0) {
+                console.log("Tied best of 5 games!")
+            } else if (score > 0) {
+                console.log("You won best of 5 games!")
+            } else if (score < 0) {
+                console.log("You lost best of 5 games!")
+            }
+
+        }
+
+        fiveGames()
+
+    </script>
+</body>
+</html>
